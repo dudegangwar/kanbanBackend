@@ -1,0 +1,16 @@
+Flask==2.2.2
+Flask-SQLAlchemy==2.5.1
+# Flask-Session
+# matplotlib
+datetime
+flask-security-too
+email-validator
+bcrypt
+flask_restful
+flask_jwt_extended
+flask_cors
+jinja2
+redis
+celery[redis]
+pandas
+Flask-Caching

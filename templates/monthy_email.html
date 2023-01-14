@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <p>Dear {{data['name']}}</p>
+    <p>Welcome To Tasker App. Here is your Daily Report.</p>
+    <p>{{'You Have ' + data['inCompletedTask']|string + " incompleted task in your dashboard. Kindly Update Them" if data['inCompletedTask']>0 else "There is no pending task for you"}}</p>
+
+    <p>Your Total Summary</p>
+    <div style="display: flex; gap:10px;">
+        {% for list in data['list']%}
+        <div style="border: 1px solid black; border-radius: 5px; padding: 5px; width: 24%;">
+            <h3 style="color: violet; font-size: large;">{{list.listname}}</h3>
+            {%for task in data['task']%}
+            {%if list.id== task.parent%}
+            <div style="border:1px solid black; padding: 5px; margin-bottom: 10px;">
+                <div style="font-size: 18px; font-weight: bold;">
+                    Title: {{task.title}}
+                </div>
+                <span style="margin-bottom: 5px; font-size: 16px;">
+                    Description: {{task.content}}
+                </span>
+                <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                    <button><span>{{task.deadline}}</span></button>
+                    
+                    <span>{{"Done" if task.flag==1 else "Pending"}}</span>
+                </div>
+            </div>
+            {%endif%}
+            {%endfor%}
+            
+        </div>
+        {%endfor%}
+    </div>
+    <p>Regards</p>
+    <p>Team Tasker</p>
+
+</body>
+
+</html>
